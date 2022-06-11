@@ -1,0 +1,72 @@
+    <!-- ================================== TOP NAVIGATION ================================== -->
+    <div class="side-menu animate-dropdown outer-bottom-xs">
+        <div class="head"><i class="icon fa fa-align-justify fa-fw"></i> Categories</div>
+        <nav class="yamm megamenu-horizontal">
+            <ul class="nav">
+                @foreach ($categories as $category)
+                    <li class="dropdown menu-item"> <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            <i class="icon {{ $category->category_icon }}" aria-hidden="true"></i>
+                            @if (session()->get('language') == 'hindi')
+                                {{ $category->category_name_hi }}
+                            @else
+                                {{ $category->category_name_en }}
+                            @endif
+                        </a>
+                        <ul class="dropdown-menu mega-menu">
+                            <li class="yamm-content">
+                                <div class="row">
+                                    @if(!empty($category->subcategory) && count($category->subcategory) > 0)
+                                        @foreach ($category->subcategory as $subcategory)
+                                            <div class="col-sm-12 col-md-3">
+                                                <h2 class="title">
+                                                    <a
+                                                        href="{{ route('subcategory.products', ['id' => $subcategory->id, 'slug' => $subcategory->subcategory_slug_en]) }}">
+                                                        @if (session()->get('language') == 'hindi')
+                                                            {{ $subcategory->subcategory_name_hi }}
+                                                        @else
+                                                            {{ $subcategory->subcategory_name_en }}
+                                                        @endif
+                                                    </a>
+                                                </h2>
+                                                <ul class="links list-unstyled">
+                                                    @foreach ($subcategory->subsubcategory as $subsubcategory)
+                                                        <li>
+                                                            <a
+                                                                href="{{ route('subsubcategory.products', ['id' => $subsubcategory->id, 'slug' => $subsubcategory->subsubcategory_slug_en]) }}">
+                                                                @if (session()->get('language') == 'hindi')
+                                                                    {{ $subsubcategory->subsubcategory_name_hi }}
+                                                                @else
+                                                                    {{ $subsubcategory->subsubcategory_name_en }}
+                                                                @endif
+                                                            </a>
+                                                        </li>
+                                                    @endforeach
+                                                </ul>
+                                            </div>
+                                        @endforeach
+                                    @else
+                                        @foreach($category->products as $products)
+                                            <div class="col-sm-12 col-md-3">
+                                                <h2 class="title">
+                                                    <a href="{{route('frontend-product-details', $products->product_slug_en)}}">{{$products->product_name_en}}</a>
+                                                </h2>
+                                            </div>
+                                        @endforeach
+                                    @endif
+                                    <!-- /.col -->
+                                </div>
+                                <!-- /.row -->
+                            </li>
+                            <!-- /.yamm-content -->
+                        </ul>
+                        <!-- /.dropdown-menu -->
+                    </li>
+                    <!-- /.menu-item -->
+                @endforeach
+            </ul>
+            <!-- /.nav -->
+        </nav>
+        <!-- /.megamenu-horizontal -->
+    </div>
+    <!-- /.side-menu -->
+    <!-- ================================== TOP NAVIGATION : END ================================== -->

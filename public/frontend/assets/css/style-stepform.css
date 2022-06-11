@@ -1,0 +1,412 @@
+#heading {
+    text-transform: uppercase;
+    color: #673AB7;
+    font-weight: normal
+}
+
+#msform {
+    text-align: center;
+    position: relative;
+    margin-top: 20px
+}
+
+#msform fieldset {
+    background: white;
+    border: 0 none;
+    border-radius: 0.5rem;
+    box-sizing: border-box;
+    width: 100%;
+    margin: 0;
+    padding-bottom: 20px;
+    position: relative
+}
+
+.form-card {
+    text-align: left
+}
+
+#msform fieldset:not(:first-of-type) {
+    display: none
+}
+
+#msform input,
+#msform textarea {
+    padding: 8px 15px 8px 15px;
+    border: 1px solid #ccc;
+    border-radius: 0px;
+    margin-bottom: 25px;
+    margin-top: 2px;
+    width: 100%;
+    box-sizing: border-box;
+    font-family: montserrat;
+    color: #2C3E50;
+    background-color: #ECEFF1;
+    font-size: 16px;
+    letter-spacing: 1px
+}
+
+#msform input:focus,
+#msform textarea:focus {
+    -moz-box-shadow: none !important;
+    -webkit-box-shadow: none !important;
+    box-shadow: none !important;
+    border: 1px solid #673AB7;
+    outline-width: 0
+}
+
+#msform .action-button {
+    width: 100px;
+    background: #673AB7;
+    font-weight: bold;
+    color: white;
+    border: 0 none;
+    border-radius: 0px;
+    cursor: pointer;
+    padding: 10px 5px;
+    margin: 10px 0px 10px 5px;
+    float: right
+}
+
+#msform .action-button:hover,
+#msform .action-button:focus {
+    background-color: #311B92
+}
+
+#msform .action-button-menu {
+    width: 100px;
+    background: #87CEEB;
+    font-weight: bold;
+    color: white;
+    border: 0 none;
+    border-radius: 0px;
+    cursor: pointer;
+    padding: 10px 5px;
+    margin: 10px 0px 10px 5px;
+    float: right
+}
+
+#msform .action-button-menu:hover,
+#msform .action-button-menu:focus {
+    background-color: #6495ED;
+}
+
+#msform .action-button-previous {
+    width: 100px;
+    background: #616161;
+    font-weight: bold;
+    color: white;
+    border: 0 none;
+    border-radius: 0px;
+    cursor: pointer;
+    padding: 10px 5px;
+    margin: 10px 0px 10px 10px;
+    float: right
+}
+
+#msform .action-button-previous:hover,
+#msform .action-button-previous:focus {
+    background-color: #000000
+}
+
+.card {
+    z-index: 0;
+    border: none;
+    position: relative
+}
+
+.fs-title {
+    font-size: 25px;
+    color: #673AB7;
+    margin-bottom: 15px;
+    font-weight: normal;
+    text-align: left
+}
+
+.purple-text {
+    color: #673AB7;
+    font-weight: normal
+}
+
+.steps {
+    font-size: 25px;
+    color: gray;
+    margin-bottom: 10px;
+    font-weight: normal;
+    text-align: right
+}
+
+.fieldlabels {
+    color: gray;
+    text-align: left
+}
+
+#progressbar {
+    margin-bottom: 30px;
+    overflow: hidden;
+    color: lightgrey
+}
+
+#progressbar .active {
+    color: #673AB7
+}
+
+#progressbar li {
+    list-style-type: none;
+    font-size: 14px;
+    width: 12%;
+    float: left;
+    position: relative;
+    font-weight: 400
+}
+
+#progressbar #account:before {
+    font-family: FontAwesome;
+    content: "\f13e"
+}
+
+#progressbar #personal:before {
+    font-family: FontAwesome;
+    content: "\f007"
+}
+
+#progressbar #payment:before {
+    font-family: FontAwesome;
+    content: "\f030"
+}
+
+#progressbar #confirm:before {
+    font-family: FontAwesome;
+    content: "\f00c"
+}
+
+#progressbar li:before {
+    width: 50px;
+    height: 50px;
+    line-height: 45px;
+    display: block;
+    font-size: 20px;
+    color: #ffffff;
+    background: lightgray;
+    border-radius: 50%;
+    margin: 0 auto 10px auto;
+    padding: 2px
+}
+
+#progressbar li:after {
+    content: '';
+    width: 100%;
+    height: 2px;
+    background: lightgray;
+    position: absolute;
+    left: 0;
+    top: 25px;
+    z-index: -1
+}
+
+#progressbar li.active:before,
+#progressbar li.active:after {
+    background: #673AB7
+}
+
+.progress {
+    height: 20px
+}
+
+.progress-bar {
+    background-color: #673AB7
+}
+
+.fit-image {
+    width: 100%;
+    object-fit: cover
+}
+.submenu, .subsubmenu, .catproduct, .subcatproduct, .subsubproduct_menu {
+    padding-left: 2px;
+    padding-top: 0px;
+}
+.form-menu-checkbox {
+    display: inline-block;
+}
+
+/*for category*/
+.catproduct h5 {
+    margin-left: 14px;
+}
+.catproduct .form-menu-checkbox {
+    margin-left: 22px !important;
+}
+.catproduct .form-check-label {
+    margin-left: -13px;
+}
+
+/*for subcategory*/
+.submenu h5 {
+    margin-left: 20px;
+}
+.submenu .form-check {
+    margin-left: 32px;
+}
+.submenu .form-check-label {
+    margin-left: -14px;
+}
+
+/*for subcategory product*/
+.subcatproduct h5 {
+    margin-left: 35px;
+}
+.subcatproduct .form-check-input {
+    margin-left: -17px;
+}
+.subcatproduct .form-check-label {
+    margin-left: -1px;
+}
+
+/*for subsubmenucat*/
+.subsubmenu h5 {
+    margin-left: 39px;
+}
+.subsubmenu .form-check {
+    margin-left: 38px;
+}
+.subsubmenu .form-check-input {
+    margin-left: -17px;
+}
+.subsubmenu .form-check-label {
+    margin-left: -4px;
+}
+
+/*for subsubcat product*/
+.subsubproduct_menu h5 {
+    margin-left: 55px;
+}
+.subsubproduct_menu .form-check {
+    margin-left: 9%;
+}
+.subsubproduct_menu .form-check-label {
+    margin-left: -3.3%;
+}
+
+/*Media Queries*/
+@media only screen 
+  and (min-device-width: 375px) 
+  and (max-device-width: 667px) 
+  and (-webkit-min-device-pixel-ratio: 2) { 
+    #progressbar li {
+        list-style-type: none;
+        font-size: 9px;
+        width: 12%;
+        float: left;
+        position: relative;
+        font-weight: 400;
+    }
+    .tab-menu [type="checkbox"]:not(:checked), [type="checkbox"]:checked {
+        position: absolute;
+        left: -118px;
+        opacity: 6;
+    }
+    #menutablecontainerCustom {
+        margin-right: 5%;
+        margin-left: 5%;
+        width: 100%;
+    }
+}
+
+@media only screen 
+  and (min-device-width: 375px) 
+  and (max-device-width: 667px) 
+  and (-webkit-min-device-pixel-ratio: 2)
+  and (orientation: portrait) { 
+    #progressbar li {
+        list-style-type: none;
+        font-size: 9px;
+        width: 12%;
+        float: left;
+        position: relative;
+        font-weight: 400;
+    }
+    .tab-menu [type="checkbox"]:not(:checked), [type="checkbox"]:checked {
+        position: absolute;
+        left: -118px;
+        opacity: 6;
+    }
+    #menutablecontainerCustom {
+        margin-right: 5%;
+        margin-left: 5%;
+        width: 100%;
+    }
+}
+
+@media only screen 
+  and (min-device-width: 375px) 
+  and (max-device-width: 812px) 
+  and (-webkit-min-device-pixel-ratio: 3) { 
+    #progressbar li {
+        list-style-type: none;
+        font-size: 9px;
+        width: 12%;
+        float: left;
+        position: relative;
+        font-weight: 400;
+    }
+    .tab-menu [type="checkbox"]:not(:checked), [type="checkbox"]:checked {
+        position: absolute;
+        left: -118px;
+        opacity: 6;
+    }
+    #menutablecontainerCustom {
+        margin-right: 5%;
+        margin-left: 5%;
+        width: 100%;
+    }
+}
+
+/* Portrait */
+@media only screen 
+  and (min-device-width: 375px) 
+  and (max-device-width: 812px) 
+  and (-webkit-min-device-pixel-ratio: 3)
+  and (orientation: portrait) { 
+    #progressbar li {
+        list-style-type: none;
+        font-size: 9px;
+        width: 12%;
+        float: left;
+        position: relative;
+        font-weight: 400;
+    }
+    .tab-menu [type="checkbox"]:not(:checked), [type="checkbox"]:checked {
+        position: absolute;
+        left: -118px;
+        opacity: 6;
+    }
+    #menutablecontainerCustom {
+        margin-right: 5%;
+        margin-left: 5%;
+        width: 100%;
+    }
+}
+
+@media only screen 
+  and (min-device-width: 375px) 
+  and (max-device-width: 880px) 
+  and (-webkit-min-device-pixel-ratio: 3)
+  and (orientation: portrait) { 
+    #progressbar li {
+        list-style-type: none;
+        font-size: 9px;
+        width: 12%;
+        float: left;
+        position: relative;
+        font-weight: 400;
+    }
+    .tab-menu [type="checkbox"]:not(:checked), [type="checkbox"]:checked {
+        position: absolute;
+        left: -118px;
+        opacity: 6;
+    }
+    #menutablecontainerCustom {
+        margin-right: 5%;
+        margin-left: 5%;
+        width: 100%;
+    }
+}
