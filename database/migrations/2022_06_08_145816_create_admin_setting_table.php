@@ -30,6 +30,7 @@ class CreateAdminSettingTable extends Migration
             $table->string('website_phone_3')->nullable();
             $table->string('website_phone_4')->nullable();
             $table->json('other_fields')->nullable();
+            $table->string('sms_api_key')->nullable();
             $table->timestamps();
         });
     }

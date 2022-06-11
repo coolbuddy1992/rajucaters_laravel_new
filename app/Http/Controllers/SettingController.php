@@ -52,7 +52,9 @@ class SettingController extends Controller
                'website_phone_1' => $request->website_phone_1,
                'website_phone_2' => $request->website_phone_2,
                'website_phone_3' => $request->website_phone_3,
-               'website_phone_4' => $request->website_phone_4
+               'website_phone_4' => $request->website_phone_4,
+               'sms_api_key' => $request->sms_api_key,
+               
             ]);
         } else {
 
@@ -126,6 +128,10 @@ class SettingController extends Controller
             if(!empty($request->website_phone_4)){
                 $adminSetting->website_phone_4 = $request->website_phone_4;
             }
+            if(!empty($request->sms_api_key)){
+                $adminSetting->sms_api_key = $request->sms_api_key;
+            }
+            
             
             $adminSetting->save();
         }

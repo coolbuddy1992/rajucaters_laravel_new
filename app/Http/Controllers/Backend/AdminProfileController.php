@@ -135,7 +135,8 @@ class AdminProfileController extends Controller
 
     public function AdminPasswordChange()
     {
-        return view('admin.Profile.change_password');
+        $adminSetting = Admin_Setting::find(1);
+        return view('admin.Profile.change_password', compact('adminSetting'));
     }
 
     public function AdminPasswordUpdate(AdminPasswordUpdateRequest $request){

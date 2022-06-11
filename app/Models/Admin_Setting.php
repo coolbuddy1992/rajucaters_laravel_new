@@ -25,5 +25,6 @@ class Admin_Setting extends Model
         'website_phone_3',
         'website_phone_4',
         'other_fields',
+        'sms_api_key',
     ];
 }

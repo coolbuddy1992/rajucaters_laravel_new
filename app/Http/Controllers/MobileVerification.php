@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\UserOtpVerification;
+use App\Models\Admin_Setting;
+
 
 class MobileVerification extends Controller
 {
@@ -15,6 +17,7 @@ class MobileVerification extends Controller
 
     public function SendOtp(Request $request)
     {
+        $userDetail = Admin_Setting::find(1);
         $getOtp = $this->generateOtp();
 
         $fields = array(
@@ -30,7 +33,7 @@ class MobileVerification extends Controller
         //     $otpType = 'login';
         // }
 
-        $apiKey = env('FAST_TWO_SMS_API_KEY');
+        $apiKey = $userDetail->sms_api_key;
 
         $curl = curl_init();
 
