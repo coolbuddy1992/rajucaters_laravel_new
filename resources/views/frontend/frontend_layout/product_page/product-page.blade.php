@@ -26,8 +26,8 @@
                                 <div class="product-item-holder size-big single-product-gallery small-gallery">
                                     <div id="owl-single-product">
                                         <div class="single-product-gallery-item" id="slide{{ $product->id }}">
-                                            <a data-lightbox="image-1" data-title="Gallery" href="{{!empty($product->product_thumbnail) ? $product->product_thumbnail : env('PRODUCT_IMAGE')}}">
-                                            <img class="img-responsive" alt="" src="{{!empty($product->product_thumbnail) ? $product->product_thumbnail : env('PRODUCT_IMAGE')}}" data-echo="{{!empty($product->product_thumbnail) ? $product->product_thumbnail : env('PRODUCT_IMAGE')}}" />
+                                            <a data-lightbox="image-1" data-title="Gallery" href="{{!empty($product->product_thumbnail) ? $product->product_thumbnail : $userDetail->website_logo}}">
+                                            <img class="img-responsive" alt="" src="{{!empty($product->product_thumbnail) ? $product->product_thumbnail : $userDetail->website_logo}}" data-echo="{{!empty($product->product_thumbnail) ? $product->product_thumbnail : $userDetail->website_logo}}" />
                                             </a>
                                         </div><!-- /.single-product-gallery-item -->
                                     </div><!-- /.single-product-slider -->

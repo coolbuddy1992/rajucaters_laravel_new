@@ -10,7 +10,7 @@
                     <div class="product-image">
                         <div class="image">
                             <a href="{{ route('frontend-product-details',['id' => $product->id, 'slug' => $product->product_slug_en]) }}">
-                                <img src="{{ !empty($product->product_thumbnail) ? $product->product_thumbnail : env('PRODUCT_IMAGE') }}" alt="">
+                                <img src="{{ !empty($product->product_thumbnail) ? $product->product_thumbnail : $userDetail->website_logo }}" alt="">
                             </a>
                         </div>
                     </div>
