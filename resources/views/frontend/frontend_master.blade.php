@@ -11,6 +11,7 @@
 <meta name="author" content="">
 <meta name="keywords" content="MediaCenter, Template, eCommerce">
 <meta name="robots" content="all">
+<link rel="icon" href="{{$userDetail->website_logo}}">
 <title>@yield('title', 'Raju Caters')</title>
 
 @include('frontend.frontend_layout.body.style')

@@ -16,6 +16,7 @@ use Laravel\Fortify\Contracts\LogoutResponse;
 use Laravel\Fortify\Features;
 use Laravel\Fortify\Fortify;
 use Laravel\Fortify\Http\Requests\LoginRequest;
+use App\Models\Admin_Setting;
 
 class AdminController extends Controller
 {
@@ -39,7 +40,8 @@ class AdminController extends Controller
     }
 
     public function loginForm(){
-    	return view('auth.admin_login', ['guard' => 'admin']);
+    	$userDetail = Admin_Setting::find(1);
+        return view('auth.admin_login', ['guard' => 'admin'], compact('userDetail'));
     }
 
     /**
