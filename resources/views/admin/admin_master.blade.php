@@ -8,7 +8,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <meta name="csrf-token" content="{{ csrf_token() }}" />
-    <link rel="icon" href="../images/favicon.ico">
+    <link rel="icon" href="{{$adminSetting->website_logo}}">
 
     <title>{{Auth()->guard('admin')->user()->name}} - Dashboard</title>
     
