@@ -21,6 +21,8 @@ class CreateOrdersTable extends Migration
             $table->string('order_date');
             $table->string('order_month');
             $table->string('order_year');
+            $table->string('booking_date');
+            $table->string('customer_name');
             $table->string('status')->default('pending');
             $table->timestamps();
         });

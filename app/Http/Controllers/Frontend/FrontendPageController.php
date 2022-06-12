@@ -27,7 +27,7 @@ class FrontendPageController extends Controller
         $categories = Category::with(['subcategory', 'subsubcategory', 'products'])->orderBy('category_name_en', 'ASC')->get();
         $sliders = Slider::where('slider_name', '=', 'Main-Slider')->where('slider_status', '=', 1)->limit(3)->get();
         $new_products = Product::with(['images'])->where('status', 1)->limit(20)->get();
-        $gallery = Gallery::where('gallery_status','1')->get();
+        $gallery = Gallery::where('gallery_status','1')->inRandomOrder()->limit(5)->get();
         // $skip_category_0 = Category::skip(0)->first();
         // $skip_category_0 = Category::inRandomOrder()->first();
         $skip_category_0 = Category::first();

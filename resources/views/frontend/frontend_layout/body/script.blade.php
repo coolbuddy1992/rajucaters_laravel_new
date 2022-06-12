@@ -194,31 +194,53 @@ $(document).ready(function() {
   var usermobile;
   var OrderType;
   var request;
+  var userbookingdate;
+  var username;
   $('#book_now').click(function(e){
       e.preventDefault();
       menuId = $(this).data('menu_id');
       <?php if(Auth::check()) {?>
         usermobile = {{Auth::user()->phone_number}}
-        $.ajax({
-          headers: {
-              'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-          }, 
-          url: "{{route('storeMenu')}}",  
-          type: 'POST', 
-          data: {'phone': usermobile, 'bom_id': menuId},
-          success: function(data) {
-            toastr.success(data.message);
-            if(data.success) {
-              window.location.href = '{{route('home')}}';
-            }
-              
-          }  
+        
+
+        $("#login_user_mobile").val(usermobile);
+
+        $("#loginusermodal").modal('show');
+
+        $("#order_place").click(function(){
+          userbookingdate = $('#login_user_booking_date').val();
+          username = $('#login_user_name').val();
+          
+          $.ajax({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }, 
+            url: "{{route('storeMenu')}}",  
+            type: 'POST', 
+            data: {'phone': usermobile, 'bom_id': menuId, 'userbookingdate': userbookingdate, 'username': username},
+            success: function(data) {
+              toastr.success(data.message);
+              if(data.success) {
+                $('.responseMessage').removeClass("hide");
+                $(".cust_name").addClass("hide");
+                $(".booking_date").addClass("hide");
+                $(".mobile_number").addClass("hide");
+                $(".login-model-title").addClass("hide");
+                $('#order_place').addClass("hide");
+
+                window.location.href = "{{$route_current}}";
+              }
+                
+            }  
+          });
         });
       <?php } else {?>
         $("#testmodal").modal('show');
         $('#sendotp').click(function(){
           usermobile = $("#user_mobile").val();
-          OrderType = $(this).data('menu_type');
+          userbookingdate = $("#user_booking_date").val();
+          username = $("#user_name").val();
+          OrderType = 'Order Place';
 
           $.ajax({
             headers: {
@@ -232,9 +254,11 @@ $(document).ready(function() {
               request = data.request_id
               if(data.success) {
                 $("#sendotp").addClass("hide");
-                $("#user_otp").removeClass("hide");
+                $(".confirmotp_user").removeClass("hide");
                 $(".confirmotp").removeClass("hide");
-                $("#user_mobile").addClass("hide");
+                $(".cust_name").addClass("hide");
+                $(".booking_date").addClass("hide");
+                $(".mobile_number").addClass("hide");
                 $("#user_request").val(request);
               }  
             }
@@ -252,7 +276,7 @@ $(document).ready(function() {
               success: function(data) {
                 toastr.success(data.message);
                 if(data.success) {
-                  $("#user_otp").addClass("hide");
+                  $(".confirmotp_user").addClass("hide");
                   $("#confirmotp").addClass("hide");
                   $('.responseMessage').removeClass("hide");
                   $("#modelbutton_save").removeClass("hide");
@@ -268,11 +292,11 @@ $(document).ready(function() {
               }, 
               url: "{{route('storeMenu')}}",  
               type: 'POST', 
-              data: {'phone': usermobile, 'bom_id': menuId},
+              data: {'phone': usermobile, 'bom_id': menuId, 'userbookingdate': userbookingdate, 'username': username},
               success: function(data) {
                 toastr.success(data.message);
                 if(data.success) {
-                  window.location.href = '{{route('home')}}';
+                  window.location.href = "{{$route_current}}";
                 }
                   
               }  
@@ -361,19 +385,33 @@ $(document).ready(function() {
     });
 
   });
-
 });
 </script>
+<!-- withou login modal -->
 <div id="testmodal" class="modal fade">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                <h4 class="modal-title">Please Enter Mobile Number</h4>
+                <h4 class="modal-title">Please fill the form</h4>
             </div>
             <div class="modal-body">
-              <input type="text" name="mobile_num" id="user_mobile" placeholder="1234567890">
-              <input type="text" name="otp" id="user_otp" class="hide" placeholder="1234567890">
+              <div class="form-group cust_name">
+                <label for="user_name" class="label_set">Customer Name</label>
+                <input type="text" name="user_name" id="user_name" placeholder="Enter your name">
+              </div>
+              <div class="form-group booking_date">
+                <label for="user_booking_date" class="label_set">Booking Date</label>
+                <input type="date" name="user_booking_date" id="user_booking_date" placeholder="Booking Date">
+              </div>
+              <div class="form-group mobile_number">
+                <label for="user_mobile" class="label_set">Mobile Number</label>
+                <input type="number" name="mobile_num" id="user_mobile" placeholder="1234567890" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" maxlength = "10">
+              </div>
+              <div class="form-group hide confirmotp_user">
+                <label for="user_otp" class="label_set">Confirm Otp</label>
+                <input type="text" name="otp" id="user_otp" placeholder="1234" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" maxlength = "4">
+              </div>
               <input type="hidden" name="user_request" id="user_request">
               <p class="responseMessage hide">Thanks we will contact you shortly</p>
             </div>
@@ -383,6 +421,38 @@ $(document).ready(function() {
 
                 <button type="button" class="btn btn-primary confirmotp hide" id="confirmotp">Confirm Otp</button>
                 <button type="button" class="btn btn-primary hide" id="modelbutton_save">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Login user modal -->
+<div id="loginusermodal" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title login-model-title">Please fill the form</h4>
+            </div>
+            <div class="modal-body">
+              <div class="form-group cust_name">
+                <label for="login_user_name" class="label_set">Customer Name</label>
+                <input type="text" name="login_user_name" id="login_user_name" placeholder="Enter your name">
+              </div>
+              <div class="form-group booking_date">
+                <label for="login_user_booking_date" class="label_set">Booking Date</label>
+                <input type="date" name="login_user_booking_date" id="login_user_booking_date" placeholder="Booking Date">
+              </div>
+              <div class="form-group mobile_number">
+                <label for="user_mobile" class="label_set">Mobile Number</label>
+                <input type="number" name="mobile_num" id="login_user_mobile" placeholder="1234567890" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" maxlength = "10" value="" readonly="true">
+              </div>
+              <input type="hidden" name="user_request" id="login_user_request">
+              <p class="responseMessage hide">Thanks we will contact you shortly</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" id="order_place">Place Order</button>
             </div>
         </div>
     </div>

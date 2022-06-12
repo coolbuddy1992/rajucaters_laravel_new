@@ -74,8 +74,16 @@ if(Route::current()->getName() == 'login'){
             <div class="row">
                 <div class="col-xs-12 col-sm-12 col-md-3 logo-holder">
                     <!--  LOGO  -->
-                    <div class="logo"> <a href="{{ route('home') }}"> <img
-                                src="{{$userDetail->website_logo}}" alt="logo"> </a> </div>
+                    <div class="logo"> 
+                        <a href="{{ route('home') }}"> 
+                            <img src="{{$userDetail->website_logo}}" alt="logo"> 
+                        </a>
+                        <div class="name-logo">
+                            <a href="{{ route('home') }}"> 
+                                <p><strong>Raju Caters</strong></p>
+                            </a>
+                        </div>
+                    </div>
                     <!-- /.logo -->
                     <!--  LOGO : END  -->
                 </div>

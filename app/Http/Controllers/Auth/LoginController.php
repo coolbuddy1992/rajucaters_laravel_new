@@ -29,39 +29,22 @@ class LoginController extends Controller
             'mobileNum' => 'required|regex:/[0-9]{10}/|digits:10',            
         ]);
 
-        // Get user record
-        $user = User::where('phone_number', $request->get('mobileNum'))->first();
+        $content = new Request();
+        $content->phone = $request->get('mobileNum');
+        $content->otp_type = 'login';
 
-        if(!empty($user)){
-            $content = new Request();
-            $content->phone = $request->get('mobileNum');
-            $content->otp_type = 'login';
+        $userMobile = $request->get('mobileNum');
+        $loginType = 'login';
 
-            $userMobile = $request->get('mobileNum');
-            $loginType = 'login';
+        $otpSend = (new MobileVerification)->SendOtp($content);
 
-            $otpSend = (new MobileVerification)->SendOtp($content);
+        $otpRequestId = $otpSend['request_id']; 
 
-            $otpRequestId = $otpSend['request_id']; 
-
-            return view('auth.otpVerify', compact('userMobile', 'loginType', 'otpRequestId', 'userDetail'));
-        }else{
-            $notification = [
-                'message' => 'Mobile number not verify',
-                'alert-type' => 'error'
-            ];
-            return back()->with($notification);
-        }
-        
-
-       
+        return view('auth.otpVerify', compact('userMobile', 'loginType', 'otpRequestId', 'userDetail'));
     }
 
     public function otpVerification(Request $request)
     {
-        // $this->validate($request, [
-        //     'mobileNum' => 'required|regex:/[0-9]{10}/|digits:4',            
-        // ]);
         
         $content = new Request();
         $content->phone = $request->get('mobileNum');
@@ -73,15 +56,26 @@ class LoginController extends Controller
 
         if($otpVerify['success']){
 
-            $user = User::where('phone_number', $request->get('mobileNum'))->first();        
+            $user = User::where('phone_number', $request->get('mobileNum'))->first();
+
+            if(!empty($user)){        
         
-            // Set Auth Details
-            \Auth::login($user);
+                // Set Auth Details
+                \Auth::login($user);
+            
+            } else {
+                $user = new User();
+                $user->phone_number = $request->get('mobileNum');
+                $user->save();
+
+                // Set Auth Details
+                \Auth::login($user);
+            }
             
             // Redirect home page
             $notification = [
                 'message' => 'Otp Verify',
-                'alert-type' => 'error'
+                'alert-type' => 'success'
             ];
 
             return redirect()->route('dashboard')->with($notification);

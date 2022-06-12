@@ -37,18 +37,8 @@
                 <!--  WIDE PRODUCTS  -->
                 {{--@include('frontend.frontend_layout.home_page.middle-banner')--}}
                 <!--  WIDE PRODUCTS : END  -->
-                @if(count($skip_category_products_0) > 0)
-                    <!--  Category wise PRODUCTS  -->
-                    <?php echo 'hello';?>
-                    @include('frontend.frontend_layout.home_page.categorywise')
-                    <!-- /.section -->
-                    <!--  Category wise PRODUCTS : END  -->
-                @else
-                    <!--  Category wise PRODUCTS  -->
-                    @include('frontend.frontend_layout.home_page.gallery-carousel')
-                    <!-- /.section -->
-                    <!--  Category wise PRODUCTS : END  -->
-                @endif
+                
+                @include('frontend.frontend_layout.home_page.gallery-carousel')
 
                 <!--  Category wise PRODUCTS  -->
                 {{--@include('frontend.frontend_layout.home_page.brandwise')--}}

@@ -222,6 +222,8 @@ class CheckoutController extends Controller
 
         $order = new Order();
         $order->phone = $request->input('phone');
+        $order->booking_date = $request->input('userbookingdate');
+        $order->customer_name = $request->input('username');
         $order->order_number = mt_rand() . $dt->second;
         $order->invoice_number = mt_rand() . $dt->year. $dt->second;
         $order->order_date = $dt;

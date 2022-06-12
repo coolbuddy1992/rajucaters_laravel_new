@@ -5,7 +5,7 @@
     <div class="item" style="background-image: url({{ asset($galleries->photo_location) }});">
         <div class="container-fluid">
             <div class="caption bg-color vertical-center text-left">
-                <div class="big-text fadeInDown-1">{{ $galleries->photo_name }}</div>
+                <!-- <div class="big-text fadeInDown-1">{{ $galleries->photo_name }}</div> -->
             </div>
             <!-- /.caption -->
         </div>

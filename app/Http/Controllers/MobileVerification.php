@@ -6,7 +6,6 @@ use Illuminate\Http\Request;
 use App\Models\UserOtpVerification;
 use App\Models\Admin_Setting;
 
-
 class MobileVerification extends Controller
 {
     public function generateOtp()

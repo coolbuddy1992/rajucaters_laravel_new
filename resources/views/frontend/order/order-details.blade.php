@@ -12,7 +12,18 @@
                     <table class="table">
                         <tr>
                             <th> Name : </th>
-                            <th> {{ $user->name }} </th>
+                            <th> {{ $order->customer_name }} </th>
+                        </tr>
+
+                        <tr>
+                            <th> Booking Date </th>
+                            <?php
+                                $timestamp = strtotime($order->booking_date);
+   
+                                // Create the new format from the timestamp
+                                $date = date("d-m-Y", $timestamp);
+                            ?>
+                            <th> {{ $date }} </th>
                         </tr>
 
                         <tr>

@@ -1,5 +1,5 @@
 <div class="col-md-2">
-    <img class="rounded-circle" src="{{ !empty($user->profile_photo_path) ? url($user->profile_photo_path) : url('https://res.cloudinary.com/coobuddy19921/image/upload/v1654672456/rjcaters/hnrrsl6m1jzcawwrz2kb.jpg') }}" alt="User Avatar" height="100%" width="100%">
+    <img class="rounded-circle" src="{{ !empty($user->profile_photo_path) ? url($user->profile_photo_path) : $userDetail->website_logo }}" alt="User Avatar" height="100%" width="100%">
     <ul class="list-group list-group-flush">
         <a href="{{ route('dashboard') }}" class="btn btn-primary btn-sm btn-block">Home</a>
         <a href="{{ route('user.profile') }}" class="btn btn-primary btn-sm btn-block">Profile Update</a>

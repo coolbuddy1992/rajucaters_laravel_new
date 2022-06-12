@@ -11,6 +11,7 @@ use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use PDF;
+use App\Models\Admin_Setting;
 
 class OrderDetailsController extends Controller
 {
@@ -32,7 +33,9 @@ class OrderDetailsController extends Controller
 
         $bom = Build_own_menu::all();
 
-        $bom_menu = Build_own_menu::where('id', $orderItems->id)->first();
+        $bom_menu = Build_own_menu::where('id', $orderItems->build_menu_id)->first();
+
+        $userDetail = Admin_Setting::find(1);
 
         //return $orderItems;
         return view('frontend.order.order-details', compact(
@@ -40,7 +43,8 @@ class OrderDetailsController extends Controller
             'orderItems',
             'bom',
             'bom_menu',
-            'user'
+            'user',
+            'userDetail'
         ));
     }
 

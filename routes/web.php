@@ -166,8 +166,8 @@ Route::get('/gallery', [FrontGalleryController::class,'gallery'])->name('gallery
 
 // Admin Login routes
 Route::group(['prefix'=> 'admin', 'middleware'=>['admin:admin']], function(){
-	Route::get('/1wire_rty/login',[AdminController::class, 'loginForm']);
-	Route::post('/login',[AdminController::class, 'store'])->name('admin.login');
+    Route::get('/1wire_rty/login',[AdminController::class, 'loginForm']);
+    Route::post('/login',[AdminController::class, 'store'])->name('admin.login');
 });
 
 Route::middleware(['auth:admin'])->group(function(){
@@ -300,4 +300,15 @@ Route::get('/config-cache', function() {
 Route::get('/key-generate', function() {
     $exitCode = Artisan::call('key:generate');
     return '<h1>Clear Config cleared</h1>';
+});
+
+//npm dev:
+Route::get('/npm-run-dev', function() {
+    $exitCode = Artisan::call('npm run development');
+    return '<h1>npm run development</h1>';
+});
+//npm prod:
+Route::get('/npm-run-prod', function() {
+    $exitCode = Artisan::call('npm run production');
+    return '<h1>npm run production</h1>';
 });
