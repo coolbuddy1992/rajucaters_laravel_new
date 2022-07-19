@@ -1,4 +1,9 @@
-
+<?php 
+if(Route::current()->getName() == 'login'){
+    $userDetail = App\Models\Admin_Setting::find(1);
+    $bom = App\Models\Build_own_menu::all();
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>

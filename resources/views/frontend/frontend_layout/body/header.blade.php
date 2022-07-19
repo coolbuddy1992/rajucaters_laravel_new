@@ -1,9 +1,3 @@
-<?php 
-if(Route::current()->getName() == 'login'){
-    $userDetail = App\Models\Admin_Setting::find(1);
-    $bom = App\Models\Build_own_menu::all();
-}
-?>
 <header class="header-style-1">
     <!--  TOP MENU  -->
     <div class="top-bar animate-dropdown">
